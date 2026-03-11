@@ -81,11 +81,13 @@ This API is pre-made to easily hook into the `example-template` Next.js frontend
 
 ## 📂 Project Structure
 
-- `app/Http/Controllers`: Handles incoming API requests and CRUD routing logic (e.g., `ItemController.php`).
-- `app/Models`: Eloquent models defining your data structure and soft deletes (e.g., `Item.php`).
-- `app/Http/Requests`: FormRequest classes used for scalable API body validation.
-- `app/Http/Resources`: JSON resources used to transform Eloquent models into precise frontend-ready JSON.
-- `routes/api.php`: Defines all primary API endpoints.
+- `app/Modules/`: Contains self-contained feature modules (e.g., `Item`).
+  - `Controllers/`: Module-specific controllers handling incoming API requests.
+  - `Requests/`: FormRequest classes for validation (e.g., `StoreItemRequest.php`).
+  - `Resources/`: JSON resources for standardized API responses (e.g., `ItemResource.php`).
+  - `api.php`: Module-specific route definitions, automatically loaded by the main API router.
+- `app/Models/`: Centralized Eloquent models (e.g., `Item.php`) defining database schema and behavior (e.g., Soft Deletes).
+- `routes/api.php`: Main API router that dynamically auto-loads all module routes.
 
 ---
 
